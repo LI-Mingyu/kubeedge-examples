@@ -1,1 +1,1 @@
-build -f Dockerfile -t limingyu007/kubeedge-temperature-mapper .
+docker build -f Dockerfile -t limingyu007/kubeedge-temperature-mapper .
