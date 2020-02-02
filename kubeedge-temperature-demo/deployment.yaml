@@ -16,10 +16,10 @@ spec:
     spec:
       hostNetwork: true
       nodeSelector:
-        name: "raspberry-pi"
+        name: "raspberrypi"
       containers:
       - name: temperature
-        image: kubeedge/temperature-mapper-demo:arm32
+        image: limingyu007/kubeedge-temperature-mapper
         imagePullPolicy: IfNotPresent
         securityContext:
           privileged: true

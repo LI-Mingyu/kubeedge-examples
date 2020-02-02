@@ -1,4 +1,5 @@
 FROM golang:1.12-alpine3.10
+COPY ./repositories   /etc/apk/
 RUN apk add gcc libc-dev
 RUN mkdir -p $GOPATH/src/temperature-mapper
 COPY . $GOPATH/src/temperature-mapper
