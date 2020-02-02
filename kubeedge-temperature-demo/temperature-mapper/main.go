@@ -100,11 +100,13 @@ func main() {
 	sensorType := dht.DHT11
 	// sensorType := dht.AM2302
 	//sensorType := dht.DHT12
-	pin := 11
+	pin := 17
 	totalRetried := 0
 	totalMeasured := 0
 	totalFailed := 0
 	term := false
+
+	collectingPeriod := 5000
 
 	// connect to Mqtt broker
 	cli := connectToMqtt()
@@ -112,12 +114,13 @@ func main() {
 	for {
 		// Read DHT11 sensor data from specific pin, retrying 10 times in case of failure.
 		temperature, humidity, retried, err :=
-			dht.ReadDHTxxWithContextAndRetry(ctx, sensorType, pin, false, 10)
+			dht.ReadDHTxxWithContextAndRetry(ctx, sensorType, pin, false, 0)
 		totalMeasured++
 		totalRetried += retried
 		if err != nil && ctx.Err() == nil {
 			totalFailed++
 			lg.Error(err)
+			time.Sleep(time.Duration(collectingPeriod) * time.Millisecond)
 			continue
 		}
 		// print temperature and humidity
@@ -136,7 +139,7 @@ func main() {
 			term = true
 			// sleep 1.5-2 sec before next round
 			// (recommended by specification as "collecting period")
-		case <-time.After(2000 * time.Millisecond):
+		case <-time.After(time.Duration(collectingPeriod) * time.Millisecond):
 		}
 		if term {
 			break
