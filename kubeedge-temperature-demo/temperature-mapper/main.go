@@ -112,9 +112,9 @@ func main() {
 	cli := connectToMqtt()
 
 	for {
-		// Read DHT11 sensor data from specific pin, retrying 10 times in case of failure.
+		// Read DHT11 sensor data from specific pin, retrying 5 times in case of failure.
 		temperature, humidity, retried, err :=
-			dht.ReadDHTxxWithContextAndRetry(ctx, sensorType, pin, false, 0)
+			dht.ReadDHTxxWithContextAndRetry(ctx, sensorType, pin, false, 5)
 		totalMeasured++
 		totalRetried += retried
 		if err != nil && ctx.Err() == nil {
