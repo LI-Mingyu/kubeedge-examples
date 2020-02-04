@@ -13,8 +13,8 @@ import (
 	MQTT "github.com/eclipse/paho.mqtt.golang"
 	"github.com/golang/glog"
 
-	"github.com/kubeedge/examples/led-raspberrypi/configuration"
-	"github.com/kubeedge/examples/led-raspberrypi/light_driver"
+	"github.com/kubeedge-examples/led-raspberrypi/configuration"
+	"github.com/kubeedge-examples/led-raspberrypi/light_driver"
 )
 
 const (
