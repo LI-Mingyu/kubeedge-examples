@@ -14,7 +14,7 @@ spec:
       - key: ''
         operator: In
         values:
-        - edge-node1          #pls give your edge node name
+        - raspberrypi          #pls give your edge node name
 status:
   twins:
     - propertyName: power-status

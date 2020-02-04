@@ -15,7 +15,7 @@ spec:
       hostNetwork: true
       containers:
       - name: led-light-mapper-container
-        image: <your_dockerhub_username>/led-light-mapper:v1.1
+        image: limingyu007/led-light-mapper:v0.9
         imagePullPolicy: Always
         securityContext:
           privileged: true
@@ -25,5 +25,5 @@ spec:
       volumes:
       - name: config-volume
         configMap:
-          name: device-profile-config-<edge_node_name>
+          name: device-profile-config-raspberrypi
       restartPolicy: Always
