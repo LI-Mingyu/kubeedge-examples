@@ -15,7 +15,7 @@ spec:
       hostNetwork: true
       containers:
       - name: led-light-mapper-container
-        image: limingyu007/led-light-mapper:v0.9
+        image: limingyu007/led-light-mapper:0.9
         imagePullPolicy: Always
         securityContext:
           privileged: true
